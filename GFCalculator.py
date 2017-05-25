@@ -18,8 +18,8 @@ def addsub(Ax,Bx,disp,op):
 	space = len(B)-1
 	if disp: #for displaying solution
 		print '\t\t'+'   '*space+'    '*(len(B)-len(A))+'  '.join(str(i) for i in A)
-		print '\t\t'+op+'   '*(space)+'  '*(len(A)-len(B))+'  '.join(str(i) for i in B)
-		print '\t    '+'----'*(3*(space))
+		print '\t\t'+op+'   '*space+'  '*(len(A)-len(B))+'  '.join(str(i) for i in B)
+		print '\t    '+'----'*(3*space)
 
 	if len(Ax) > len(Bx):
 		Bx = pad_zeroes(Bx, len(Ax), len(Bx))
@@ -71,8 +71,8 @@ def mult(Ax,Bx,Px,disp):
 	space = len(B)-1
 	if disp: #for displaying solution
 		print '\t\t'+'   '*space+'    '*(len(B)-len(A))+'  '.join(str(i) for i in A)
-		print '\t\t*'+'   '*(space)+'  '*(len(A)-len(B))+'  '.join(str(i) for i in B)
-		print '\t    '+'----'*(3*(space))
+		print '\t\t*'+'   '*space+'  '*(len(A)-len(B))+'  '.join(str(i) for i in B)
+		print '\t    '+'----'*(3*space)
 
 	#multiply each decimal element of Bx to Ax
 	result = []
@@ -119,9 +119,11 @@ def div(Ax,Bx,Px,disp):
 
 		if disp: #for displaying solution
 			print '\t\t'+'   '*space+'    '*(len(y)-len(A))+'  '.join(str(i) for i in A)
-			print '\t\t'+'   '*(space)+'   '*(len(A)-len(y))+'  '.join(str(i) for i in y)+' = B * '+str(x)+' x^'+str(len(y)-len(B))
-			print '\t    '+'----'*(3*(space))
+			print '\t\t'+'   '*space+'   '*(len(A)-len(y))+'  '.join(str(i) for i in y)+' = B * '+str(x)+' x^'+str(len(y)-len(B))
+			print '\t    '+'----'*(3*space)
 
+	if disp: #for displaying remainder
+		print '\t\t'+'   '*space+'    '*(len(y)-len(Ax))+'  '.join(str(i) for i in Ax)+" = Remainder"
 	#outputs the quotient and the remainder	
 	return output, Ax
 
@@ -180,9 +182,9 @@ while (True):
 		Bx = raw_input("\t\tB(x) = ")
 		Px = raw_input("\t\tP(x) = ")
 		# for testing
-		Ax = "1 0 7 6"
-		Bx = "1 6 3"
-		Px = "1 0 1 1"
+		# Ax = "1 0 7 6"
+		# Bx = "1 6 3"
+		# Px = "1 0 1 1"
 
 		#input validation
 		if inputVal(Ax)==0 and inputVal(Bx)==0 and inputVal(Px)==0:
