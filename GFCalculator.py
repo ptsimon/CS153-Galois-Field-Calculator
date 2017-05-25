@@ -142,6 +142,20 @@ def printpoly(Cx):
 		deg -= 1
 	return poly
 
+def inputVal(Cx):
+
+	try:
+		Cx = [int(x) for x in Cx.split(" ")]
+		return 0
+	except ValueError:
+		if Cx == "":
+			print "\n\tINVALID INPUT: Input cannot be empty.\n"
+		elif Cx[len(Cx) - 1] == " ":
+			print "\n\tINVALID INPUT: There should be no space at the end.\n"
+		else:
+			print "\n\tINVALID INPUT: Format must be integers separated by spaces.\n"
+		return 1
+
 
 while (True):
 	os.system('cls' if os.name == 'nt' else 'clear')
@@ -157,16 +171,22 @@ while (True):
 	print"            | |     (____ | |/ ___) | | | |(____ (_   _) _ \ / ___)"
 	print"            | |_____/ ___ | ( (___| |_| | |/ ___ | | || |_| | |    "
 	print"             \______)_____|\_)____)____/ \_)_____|  \__)___/|_|    "
+	
+	while(True):
 
-	#get input
-	print("\n\tEnter Polynomials A(x), B(x), P(x): (enter q to Quit)")
-	Ax = raw_input("\t\tA(x) = ")
-	Bx = raw_input("\t\tB(x) = ")
-	Px = raw_input("\t\tP(x) = ")
-	# for testing
-	Ax = "1 0 7 6"
-	Bx = "1 6 3"
-	Px = "1 0 1 1"
+		#get input
+		print("\n\tEnter Polynomials A(x), B(x), P(x): (enter q to Quit)")
+		Ax = raw_input("\t\tA(x) = ")
+		Bx = raw_input("\t\tB(x) = ")
+		Px = raw_input("\t\tP(x) = ")
+		# for testing
+		Ax = "1 0 7 6"
+		Bx = "1 6 3"
+		Px = "1 0 1 1"
+
+		#input validation
+		if inputVal(Ax)==0 and inputVal(Bx)==0 and inputVal(Px)==0:
+			break
 
 	#exits the program when "e" is entered
 	if ('q' in Ax or 'q' in Bx or 'q' in Px):
@@ -211,7 +231,7 @@ while (True):
 			print "\n\tSolution:\n"
 
 			result = addsub(A,B,1,'-')
-			print "\n\n\tA(x) + B(x) = ",printpoly(result)
+			print "\n\n\tA(x) - B(x) = ",printpoly(result)
 		elif op == '3': #multiplication
 			print "\n\tM U L T I P L I C A T I O N"
 			print "\n\tGiven:\n\t\tA(x) = ", printpoly(Ax), "\n\t\tB(x) = ", printpoly(Bx), "\n\t\tP(x) = ", printpoly(Px)
