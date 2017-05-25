@@ -145,7 +145,7 @@ def printpoly(Cx):
 	return poly
 
 def inputVal(Cx):
-
+	#checks if the input is in the right format
 	try:
 		Cx = [int(x) for x in Cx.split(" ")]
 		return 0
@@ -186,21 +186,21 @@ while (True):
 		# Bx = "1 6 3"
 		# Px = "1 0 1 1"
 
+		#exits the program when "q" is entered
+		if ('q' in Ax or 'q' in Bx or 'q' in Px):
+			os.system('cls' if os.name == 'nt' else 'clear')
+			print"\n\n\n                 _______                 _ _                 _ "
+			print"                (_______)               | | |               | |"
+			print"                 _   ___  ___   ___   __| | |__  _   _ _____| |"
+			print"                | | (_  |/ _ \ / _ \ / _  |  _ \| | | | ___ |_|"
+			print"                | |___) | |_| | |_| ( (_| | |_) ) |_| | ____|_ "
+			print"                 \_____/ \___/ \___/ \____|____/ \__  |_____)_|"
+			print"                                                (____/         "
+			exit()
+
 		#input validation
 		if inputVal(Ax)==0 and inputVal(Bx)==0 and inputVal(Px)==0:
 			break
-
-	#exits the program when "e" is entered
-	if ('q' in Ax or 'q' in Bx or 'q' in Px):
-		os.system('cls' if os.name == 'nt' else 'clear')
-		print"\n\n\n                 _______                 _ _                 _ "
-		print"                (_______)               | | |               | |"
-		print"                 _   ___  ___   ___   __| | |__  _   _ _____| |"
-		print"                | | (_  |/ _ \ / _ \ / _  |  _ \| | | | ___ |_|"
-		print"                | |___) | |_| | |_| ( (_| | |_) ) |_| | ____|_ "
-		print"                 \_____/ \___/ \___/ \____|____/ \__  |_____)_|"
-		print"                                                (____/         "
-		exit()
 
 	#turns the string into array of ints
 	Ax = [int(i) for i in Ax.split()]
