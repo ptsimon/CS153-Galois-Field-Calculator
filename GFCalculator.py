@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 import os
 
 def pad_zeroes(Cx, len1, len2):
@@ -15,12 +13,14 @@ def del_zeroes(Cx):
 	return Cx
 
 def addsub(Ax,Bx,disp,op):
-	if disp: #for displaying solution
-		print '\t\t  '+'  '.join(str(i) for i in A)
-		print '\t\t'+op+'  '*(abs((len(A)-len(B)))*2)+'  '.join(str(i) for i in B)
-		print '\t\t'+'-'*(3*(len(A)+1))
-
 	#addition and subtraction of galois field are the same
+
+	space = len(B)-1
+	if disp: #for displaying solution
+		print '\t\t'+'   '*space+'    '*(len(B)-len(A))+'  '.join(str(i) for i in A)
+		print '\t\t'+op+'   '*(space)+'  '*(len(A)-len(B))+'  '.join(str(i) for i in B)
+		print '\t    '+'----'*(3*(space))
+
 	if len(Ax) > len(Bx):
 		Bx = pad_zeroes(Bx, len(Ax), len(Bx))
 	elif len(Ax) < len(Bx):
@@ -31,7 +31,7 @@ def addsub(Ax,Bx,disp,op):
 		result.append(Ax[i]^Bx[i]) #xor operation for every elements
 
 	if disp: #for displaying solution
-		print '\t\t  '+'  '.join(str(i) for i in result)
+		print '\t\t'+'   '*space+'  '.join(str(i) for i in result)
 	return result
 
 def bin_mult(a,b,Px):
@@ -67,6 +67,7 @@ def bin_mult(a,b,Px):
 
 def mult(Ax,Bx,Px,disp):
 	#multiplication of galois field
+
 	space = len(B)-1
 	if disp: #for displaying solution
 		print '\t\t'+'   '*space+'    '*(len(B)-len(A))+'  '.join(str(i) for i in A)
@@ -102,6 +103,8 @@ def mult(Ax,Bx,Px,disp):
 def div(Ax,Bx,Px,disp):
 	#division of galois field using long division
 
+	space = len(Bx)-1
+
 	output = []
 	#while the dividend can still be divided by the divisor (dividend >= divisor)
 	while (int(''.join(map(str,Ax))) >= int(''.join(map(str,Bx)))):
@@ -110,8 +113,14 @@ def div(Ax,Bx,Px,disp):
 		y = mult(Bx,[x],Px,0) #multiply
 		for i in range(len(Ax)-len(y)): #append necessary zeroes
 			y.append(0)
+
 		Ax = addsub(Ax,y,0,'-') #subtract #becomes the new dividend and eventually the remainder
 		Ax = del_zeroes(Ax) #remove unneeded zeroes
+
+		if disp: #for displaying solution
+			print '\t\t'+'   '*space+'    '*(len(y)-len(A))+'  '.join(str(i) for i in A)
+			print '\t\t'+'   '*(space)+'   '*(len(A)-len(y))+'  '.join(str(i) for i in y)+' = B * '+str(x)+' x^'+str(len(y)-len(B))
+			print '\t    '+'----'*(3*(space))
 
 	#outputs the quotient and the remainder	
 	return output, Ax
