@@ -1,6 +1,6 @@
 # Galois Field Calculator
 
-This script emulates a Galois Field Calculator for GF(2<sup>m</sup>) written in Python. This is a requirement for the subject CS 153: Introduction to Computer Security.
+This script emulates a Galois Field Calculator for GF(2<sup>m</sup>) written in Python 2.7.13. This is a requirement for the subject CS 153: Introduction to Computer Security.
 
 Reference: http://www.ee.unb.ca/cgi-bin/tervo/calc2.pl
 
