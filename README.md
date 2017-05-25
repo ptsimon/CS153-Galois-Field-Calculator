@@ -4,7 +4,7 @@ This script emulates a Galois Field Calculator for GF(2<sup>m</sup>) written in 
 
 Reference: http://www.ee.unb.ca/cgi-bin/tervo/calc2.pl
 
-# Features
+### Features
 
 - Input Validation. The format for the input must be entered as decimal coefficients separated by spaces.
 - Computation of A(x) + B(x)
